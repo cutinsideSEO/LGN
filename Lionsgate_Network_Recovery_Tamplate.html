@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lionsgate Network | Master Template</title>
+    
+    <!-- Fonts: Montserrat and Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- 1. Variables & Reset --- */
+        :root {
+            --e-global-color-primary: #6EC1E4;
+            --e-global-color-secondary: #54595F00;
+            --e-global-color-text: #7A7A7A;
+            --e-global-color-accent: #61CE70;
+            --lg-blue: #4C72F1;
+            --lg-cyan: #5EECC1;
+            --lg-dark-blue: #1133A3;
+            --lg-text-dark: #3A3D41;
+            --lg-bg-light: #F4F9FD;
+            --lg-bg-lighter-blue: #E6F4FC;
+            --lg-gradient-button: linear-gradient(180deg, #4EACDA 0%, #5EECC1 100%);
+            --lg-gradient-card: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --lg-font-primary: 'Montserrat', sans-serif;
+            --lg-font-text: 'Roboto', sans-serif;
+            --lg-pink-gradient: linear-gradient(180deg, #FFC0D7 0%, #FFC0D7 100%);
+            --lg-blue-gradient: linear-gradient(180deg, #4C72F1 0%, #2E54DD 100%);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--lg-font-text);
+            background-color: var(--lg-bg-light);
+            color: var(--lg-text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        img { max-width: 100%; height: auto; border: 0; }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--lg-font-primary);
+            font-weight: 700;
+            margin-top: 0;
+            line-height: 1.3;
+        }
+
+        strong { font-weight: 700; }
+
+        /* --- 2. Header --- */
+        .site-header {
+            background: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .header-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-img { height: 50px; width: auto; }
+
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+
+        .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+        }
+        .nav-link:hover { color: var(--lg-blue); }
+        .menu-toggle { display: none; font-size: 24px; color: #333; }
+        
+        @media (max-width: 991px) {
+            .nav-menu { display: none; }
+            .menu-toggle { display: block; }
+        }
+
+        /* --- 3. Hero Section --- */
+        .hero-section {
+            background-color: var(--lg-blue);
+            padding: 120px 20px 100px;
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #FFFFFF;
+        }
+
+        .hero-subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #5EECC1;
+        }
+
+        .hero-intro-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            color: #ffffff;
+            text-align: center; /* Centered as requested */
+        }
+
+        .hero-cta-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative; /* For absolute positioning of widget */
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trustpilot-placeholder {
+            background: rgba(255,255,255,0.1);
+            border: 1px dashed rgba(255,255,255,0.3);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Position Trustpilot to the far right on Desktop */
+        .trustpilot-placeholder.hero-widget {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .trustpilot-placeholder.large {
+            background: white;
+            color: #333;
+            border: 1px solid #eee;
+            padding: 20px 40px;
+            font-size: 16px;
+            margin: 30px auto;
+            max-width: 300px;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .shape-divider-bottom {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        .shape-divider-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(130% + 1.3px);
+            height: 100px;
+        }
+        .shape-divider-bottom .shape-fill {
+            fill: var(--lg-bg-light);
+        }
+
+        /* --- 4. General Components --- */
+        .btn-lg-gradient {
+            background-image: var(--lg-gradient-button);
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            border: 4px solid var(--lg-cyan);
+            border-radius: 80px;
+            padding: 15px 40px;
+            display: inline-block;
+            box-shadow: 7px 8px 11px 0 rgba(2, 116, 111, 0.11);
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+        .btn-lg-gradient:hover { transform: scale(0.95); color: white; }
+        
+        .content-wrapper {
+            max-width: 1140px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .content-heading {
+            color: var(--lg-text-dark);
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--lg-blue);
+            padding-left: 20px;
+        }
+        
+        .sub-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--lg-text-dark);
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .content-text { font-size: 18px; color: #555; margin-bottom: 20px; }
+
+        /* --- ZIG ZAG LAYOUT STYLES --- */
+        .zigzag-container {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .zigzag-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+        }
+
+        .zigzag-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .zigzag-content {
+            flex: 1;
+        }
+
+        .zigzag-visual {
+            flex: 1;
+            width: 100%;
+            min-height: 350px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .visual-placeholder {
+            background: var(--lg-bg-light);
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        
+        .visual-icon {
+            font-size: 80px;
+            color: var(--lg-blue);
+            margin-bottom: 20px;
+            opacity: 0.8;
+            background: -webkit-linear-gradient(#4C72F1, #5EECC1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Fake UI for visuals */
+        .fake-ui-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .fake-ui-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* Scam Cards Grid */
+        .scam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+        .scam-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            padding: 30px;
+        }
+        .scam-card:hover { transform: translateY(-10px); border-color: var(--lg-cyan); }
+        .scam-card i {
+            font-size: 30px;
+            color: var(--lg-blue);
+            margin-bottom: 15px;
+        }
+        .scam-card-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: var(--lg-text-dark); margin-top: 0; }
+        .scam-card-desc { font-size: 16px; color: #666; margin-bottom: 20px; flex-grow: 1; }
+        .btn-text-link { color: var(--lg-blue); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; margin-top: auto; }
+        .btn-text-link i { margin-left: 5px; }
+
+        /* Other Sections */
+        .section-heading-center {
+            color: var(--lg-text-dark);
+            font-size: 36px;
+            margin-top: 100px;
+            margin-bottom: 60px;
+            text-align: center;
+            width: 100%;
+            font-weight: 700;
+        }
+
+        .alert-box {
+            background-color: #FFF0F0;
+            border: 1px solid #FFCCCC;
+            color: #D9534F;
+            padding: 30px;
+            border-radius: 12px;
+            font-family: 'Roboto', monospace;
+            font-size: 18px;
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .content-list li {
+            margin-bottom: 15px;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .feature-list i {
+            color: var(--lg-cyan);
+            font-size: 20px;
+            margin-right: 15px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        /* Carousel */
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 5px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .testimonial-card {
+            min-width: 320px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            scroll-snap-align: center;
+            border: 1px solid #eee;
+            flex-shrink: 0;
+        }
+        .testimonial-recovered {
+            font-weight: 700;
+            margin-top: 20px;
+            color: var(--lg-blue);
+            font-size: 18px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        /* Step Card Carousel (How We Work) */
+        .step-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 5px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .step-card {
+            min-width: 300px;
+            flex: 1;
+            background-image: var(--lg-pink-gradient);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            scroll-snap-align: center;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+        .step-card i {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+        }
+        .step-card h3 {
+            color: white;
+            margin: 0 0 10px 0;
+        }
+        .step-card p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Video Section */
+        .hero-video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        .hero-video { width: 100%; display: block; }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .stat-card {
+            border-radius: 30px;
+            padding: 30px 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            min-height: 180px;
+        }
+        .stat-card.pink { background-image: var(--lg-pink-gradient); }
+        .stat-card.blue { background-image: var(--lg-blue-gradient); }
+        .stat-label { font-size: 14px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; opacity: 0.9; }
+        .stat-prefix { font-size: 20px; font-weight: 700; margin-bottom: 0px; text-transform: uppercase; }
+        .stat-number { font-size: 50px; font-weight: 700; line-height: 1; }
+
+        /* Exchange Grid */
+        .exchange-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+        .exchange-logo { 
+            height: 40px; 
+            width: auto; 
+            opacity: 0.7; 
+            transition: all 0.3s;
+            filter: grayscale(100%);
+        }
+        .exchange-logo:hover { 
+            opacity: 1; 
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* Why Choose Us */
+        .why-choose-section {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+        .why-choose-icon {
+            width: auto;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .why-choose-icon img {
+            height: 100%;
+            width: auto;
+        }
+        .why-choose-text {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Full Width Contact Banner */
+        .contact-banner {
+            width: 100%;
+            background-color: var(--lg-bg-lighter-blue);
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            cursor: pointer;
+        }
+        .faq-question { font-weight: 700; color: var(--lg-blue); font-size: 20px; display: block; margin-bottom: 15px; }
+        .faq-answer { color: #666; font-size: 16px; line-height: 1.8; margin: 0; }
+
+        /* Footer */
+        .site-footer { background-color: #fff; padding: 60px 20px; text-align: center; border-top: 1px solid #eee; }
+        .footer-bottom { margin-top: 40px; font-size: 14px; color: #999; }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .zigzag-row {
+                flex-direction: column !important;
+                gap: 30px;
+            }
+            .zigzag-visual {
+                min-height: 250px;
+            }
+            .content-heading { font-size: 26px; }
+            .hero-title { font-size: 32px; }
+            .zigzag-container { gap: 60px; }
+            
+            /* Adjust Trustpilot placement on mobile */
+            .hero-cta-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .trustpilot-placeholder.hero-widget {
+                position: static;
+                transform: none;
+                margin-top: 20px;
+            }
+        }
+
+        /* Dev Note Banner */
+        .dev-note-banner {
+            background: #ffe082;
+            color: #5d4037;
+            padding: 15px;
+            text-align: left;
+            font-weight: normal;
+            font-size: 14px;
+            border-bottom: 1px solid #ffca28;
+            line-height: 1.5;
+        }
+        .dev-note-banner ul { margin: 5px 0 0 20px; padding: 0; list-style: disc; }
+
+    </style>
+</head>
+<body>
+
+    <div class="dev-note-banner">
+        <strong>DEVELOPER INSTRUCTIONS (MASTER TEMPLATE):</strong>
+        <ul>
+            <li><strong>Alt Text:</strong> Add 'alt' text to ALL images (ZigZag visuals, icons, logos, etc.) for SEO & Accessibility.</li>
+            <li><strong>Editable Headings:</strong> Ensure all ZigZag Section headings (H2) and subheadings are editable fields.</li>
+            <li><strong>Optional Sections:</strong> Every major section (ZigZags, Warning Signs, Video, Stats, etc.) must be toggleable/removable by the admin.</li>
+            <li><strong>Repeater Logic:</strong> Allow the admin to add unlimited ZigZag sections dynamically.</li>
+            <!-- New Instructions added below -->
+            <li><strong>Link Logic:</strong> All CTA buttons & "Other Scams to Watch For" cards must be wrapped in standard <code>&lt;a href="..."&gt;</code> tags for proper navigation and SEO.</li>
+            <li><strong>Section Sorting:</strong> Ensure the CMS Admin panel allows drag-and-drop reordering for all major sections (moving them up/down the page).</li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://lionsgate.network/wp-content/uploads/2025/09/lionsgate-logo-png-e1763376719134.png" alt="Lionsgate Network" class="logo-img">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">Menu</a>
+            </nav>
+            <a href="#" class="btn-lg-gradient">Get Started Free</a>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: Hero (Dynamic Field) -->
+    <section class="hero-section">
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <h1 class="hero-title">[H1: e.g. Recover Scammed USDT]</h1>
+            <p class="hero-subtitle">[Subtitle: e.g. Victim of a Scam? Here is your Recovery Plan]</p>
+            
+            <!-- Centered Intro Text -->
+            <div class="hero-intro-text">
+                <p>[Intro Paragraph: 2-3 lines explaining the specific scam type and offering hope.]</p>
+            </div>
+            
+            <div class="hero-cta-container">
+                <a href="#recovery-steps" class="btn-lg-gradient">Start Recovery Process</a>
+                <!-- Trustpilot Widget Placeholder (Positioned absolutely to right on desktop) -->
+                <div class="trustpilot-placeholder hero-widget">
+                    <i class="fas fa-star" style="color:#00b67a;"></i> Trustpilot Widget
+                </div>
+            </div>
+        </div>
+
+        <div class="shape-divider-bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="shape-fill" d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="content-wrapper">
+        
+        <!-- SECTION 2: ZIG-ZAG Layout (Repeater Block) -->
+        <div class="zigzag-container">
+            
+            <!-- Row 1 -->
+            <div class="zigzag-row">
+                <div class="zigzag-content">
+                    <h2 class="content-heading">[Section 1 - H2: What is the Scam?]</h2>
+                    <p class="content-text">[Paragraph text explaining the concept.]</p>
+                </div>
+                <div class="zigzag-visual">
+                    <div class="visual-placeholder">
+                        <i class="fas fa-image visual-icon"></i>
+                        <h4 style="color:#555;">[Visual 1]</h4>
+                        <p style="font-size:12px; color:#999; margin-top:5px;">(Dev: Add Alt Text)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="zigzag-row">
+                <div class="zigzag-content">
+                    <h2 class="content-heading">[Section 2 - H2: How the {scam} Works]</h2>
+                    <h3 class="sub-heading">[Sub-heading]</h3>
+                    <p class="content-text">[Detailed text block explaining specific steps.]</p>
+                </div>
+                <div class="zigzag-visual">
+                    <div class="visual-placeholder">
+                        <div class="fake-ui-card">
+                            <div class="fake-ui-row"><strong>[Fake UI Element]</strong></div>
+                            <div style="background:#f4f4f4; height:20px; width:80%;"></div>
+                        </div>
+                        <p style="font-size:12px; color:#999; margin-top:5px;">(Dev: Add Alt Text)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: Immediate Steps -->
+            <div class="zigzag-row">
+                <div class="zigzag-content">
+                    <h2 class="content-heading">[Section 3 - H2: Immediate Steps to Take]</h2>
+                    <div style="margin-top:20px;">
+                        <h3 class="sub-heading" style="margin:0 0 10px 0; font-size:20px;">1. [Step 1 Title]</h3>
+                        <p class="content-text" style="font-size:16px;">[Short description of step 1.]</p>
+                    </div>
+                    <div style="margin-top:20px;">
+                        <h3 class="sub-heading" style="margin:0 0 10px 0; font-size:20px;">2. [Step 2 Title]</h3>
+                        <p class="content-text" style="font-size:16px;">[Short description of step 2.]</p>
+                    </div>
+                </div>
+                <div class="zigzag-visual">
+                    <div class="visual-placeholder">
+                        <i class="fas fa-running visual-icon"></i>
+                        <h4 style="color:#555;">[Action Visual]</h4>
+                        <p style="font-size:12px; color:#999; margin-top:5px;">(Dev: Add Alt Text)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: Myth of Reversibility -->
+            <div class="zigzag-row">
+                <div class="zigzag-content">
+                    <h2 class="content-heading">[Section 4 - H2: The Myth of Reversibility]</h2>
+                    <p class="content-text">[Paragraph explaining blockchain immutability vs traceability.]</p>
+                </div>
+                <div class="zigzag-visual">
+                    <div class="visual-placeholder">
+                        <i class="fas fa-link visual-icon"></i>
+                        <h4 style="color:#555;">[Blockchain Concept Visual]</h4>
+                        <p style="font-size:12px; color:#999; margin-top:5px;">(Dev: Add Alt Text)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 5: Path to Recovery -->
+            <div class="zigzag-row">
+                <div class="zigzag-content">
+                    <h2 class="content-heading">[Section 5 - H2: The Path to Recovery: Professional Forensics]</h2>
+                    <p class="content-text">[Introductory sentence about the process.]</p>
+                    <ul class="content-list" style="color:#555; list-style:disc; padding-left:20px;">
+                        <li><strong>Step 1:</strong> [Trace details]</li>
+                        <li><strong>Step 2:</strong> [Identify details]</li>
+                        <li><strong>Step 3:</strong> [Intervene details]</li>
+                    </ul>
+                </div>
+                <div class="zigzag-visual">
+                    <div class="visual-placeholder">
+                        <i class="fas fa-search visual-icon"></i>
+                        <h4 style="color:#555;">[Forensics Visual]</h4>
+                        <p style="font-size:12px; color:#999; margin-top:5px;">(Dev: Add Alt Text)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End ZigZag Container -->
+        
+        <!-- SECTION 3: Standard Section (Non-ZigZag) -->
+        <div style="text-align: center; margin-top: 100px;">
+            <h2 class="section-heading-center" style="margin-top:0;">Don't Let Scammers Have the Final Word</h2>
+            <p class="content-text" style="max-width:800px; margin:0 auto 40px;">[Empowering closing statement encouraging action.]</p>
+            <a href="#" class="btn-lg-gradient">Request Confidential Case Evaluation</a>
+        </div>
+
+        <!-- SECTION 4: Warning Signs Grid (e.g. Red Flags) -->
+        <div style="margin-top: 100px;">
+            <h2 class="content-heading">[Section Title: Warning Signs / Red Flags]</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div><strong>[Flag 1]</strong><br><span style="font-size: 16px; color: #666;">[Desc]</span></div>
+                    </li>
+                    <li>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div><strong>[Flag 2]</strong><br><span style="font-size: 16px; color: #666;">[Desc]</span></div>
+                    </li>
+                </ul>
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div><strong>[Flag 3]</strong><br><span style="font-size: 16px; color: #666;">[Desc]</span></div>
+                    </li>
+                    <li>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div><strong>[Flag 4]</strong><br><span style="font-size: 16px; color: #666;">[Desc]</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div> <!-- End of Main Content Wrapper -->
+
+    <!-- SECTION 5: Video Section (Global) -->
+    <div style="background-color: var(--lg-bg-light); padding-top: 60px;">
+        <div style="max-width: 1140px; margin: 0 auto; padding: 0 20px;">
+            <div class="hero-video-container">
+                <video class="hero-video" controls poster="https://lionsgate.network/wp-content/uploads/2025/11/Video-screenshot-optimized.webp">
+                    <source src="https://lionsgate.network/wp-content/uploads/2023/11/Lionsgate-network-intro-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 6: Stats Section (Global) -->
+    <section class="stats-section">
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <h2 class="hero-title" style="color:var(--lg-text-dark); font-size: 36px;">Lost & Recovered</h2>
+            <p class="stats-subtitle" style="color:#666; margin-bottom: 40px;">The Numbers: Funds Traced. Impact Made.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card pink">
+                    <span class="stat-label">AVG. ANNUAL LOSS</span>
+                    <div class="stat-value-group"><span class="stat-prefix">BILLION USD $</span><span class="stat-number">53</span></div>
+                </div>
+                <div class="stat-card blue">
+                    <span class="stat-label">TOTAL ANNUAL TRACED</span>
+                    <div class="stat-value-group"><span class="stat-prefix">MILLION USD +$</span><span class="stat-number">450</span></div>
+                </div>
+                <div class="stat-card pink">
+                    <span class="stat-label">NEW VICTIMS DAILY</span>
+                    <div class="stat-value-group"><span class="stat-prefix">SOURCE: IC3 +</span><span class="stat-number">6,000</span></div>
+                </div>
+                <div class="stat-card blue">
+                    <span class="stat-label">ANALYSIS PRECISION</span>
+                    <div class="stat-value-group"><span class="stat-prefix">ACCURACY</span><span class="stat-number">100%</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SECTION 7: How Do We Work (Global - Process then Logos) -->
+    <section class="how-we-work-section">
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <h2 class="section-heading-center" style="margin-top: 0;">How Do We Work?</h2>
+            
+            <!-- PART A: Our Process (Moved Up) -->
+            <div style="margin-bottom: 80px;">
+                <!-- H3 REMOVED HERE -->
+                <div class="step-carousel">
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <i class="fas fa-search"></i>
+                        <h3>1. Evaluation</h3>
+                        <p>We analyze your case details to determine the feasibility of recovery.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>2. Investigation</h3>
+                        <p>Our experts trace the flow of stolen assets across the blockchain.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <i class="fas fa-file-contract"></i>
+                        <h3>3. Documentation</h3>
+                        <p>We compile a comprehensive forensic report for law enforcement.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-card">
+                        <i class="fas fa-gavel"></i>
+                        <h3>4. Action</h3>
+                        <p>Legal teams use our evidence to freeze and recover assets.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART B: Exchange Logos (Moved Down) -->
+            <div>
+                <h3 style="font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: 500; color: #000; margin-bottom: 50px; text-align: center;">Tracking Funds Across All Major Exchanges</h3>
+                <div class="exchange-grid">
+                    <img src="https://logo.clearbit.com/solana.com" alt="Solana Logo" class="exchange-logo">
+                    <img src="https://logo.clearbit.com/opensea.io" alt="OpenSea Logo" class="exchange-logo">
+                    <img src="https://logo.clearbit.com/celsius.network" alt="Celsius Logo" class="exchange-logo">
+                    <img src="https://logo.clearbit.com/binance.com" alt="Binance Logo" class="exchange-logo">
+                    <img src="https://logo.clearbit.com/coinbase.com" alt="Coinbase Logo" class="exchange-logo">
+                    <img src="https://logo.clearbit.com/ftx.com" alt="FTX Logo" class="exchange-logo">
+                    <img src="https://logo.clearbit.com/kucoin.com" alt="KuCoin Logo" class="exchange-logo">
+                    <img src="https://logo.clearbit.com/kraken.com" alt="Kraken Logo" class="exchange-logo">
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- SECTION 8: Why Choose Us (Global) -->
+    <section class="why-choose-section">
+        <div class="why-choose-icon">
+            <!-- Corrected Lionsgate Head Logo -->
+            <img src="https://lionsgate.network/wp-content/uploads/2025/09/cropped-lionsgate-logo-head.png" alt="Lionsgate Head Logo">
+        </div>
+        <h2 class="section-heading-center" style="margin-top: 20px; font-size: 38px;">Why Choose Lionsgate Network?</h2>
+        <p class="why-choose-text">[Boilerplate text about Lionsgate Network's commitment.]</p>
+
+        <!-- Centered Trustpilot Widget -->
+        <div class="trustpilot-placeholder large">
+            <i class="fas fa-star" style="color:#00b67a;"></i> Trustpilot Widget (Large)
+        </div>
+
+        <h2 class="section-heading-center" style="margin-top: 60px; font-size: 38px;">Getting Started is Easy</h2>
+        <p class="why-choose-text">[Boilerplate text about the Free Recovery Wizard.]</p>
+        
+        <!-- NEW: Testimonial Carousel -->
+        <h2 class="section-heading-center" style="margin-top: 60px; font-size: 38px;">Success Stories</h2>
+        <div class="testimonial-carousel" style="max-width:1140px; margin: 40px auto;">
+            <!-- Card 1 -->
+            <div class="testimonial-card">
+                <h3 style="margin-top:0;">[Case Title 1]</h3>
+                <p>"[Short testimonial text regarding a successful case...]"</p>
+                <div class="testimonial-recovered">Recovered: $250,000</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="testimonial-card">
+                <h3 style="margin-top:0;">[Case Title 2]</h3>
+                <p>"[Short testimonial text regarding a successful case...]"</p>
+                <div class="testimonial-recovered">Recovered: 12.5 BTC</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="testimonial-card">
+                <h3 style="margin-top:0;">[Case Title 3]</h3>
+                <p>"[Short testimonial text regarding a successful case...]"</p>
+                <div class="testimonial-recovered">Recovered: 50,000 USDT</div>
+            </div>
+        </div>
+
+        <a href="#" class="btn-lg-gradient" style="margin-top: 20px;">TRY WIZARD</a>
+    </section>
+
+    <!-- SECTION 9: FAQ -->
+    <div class="content-wrapper" style="margin-top: 0;">
+        <h2 class="content-heading">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <span class="faq-question">[Question Placeholder 1]</span>
+            <p class="faq-answer">[Answer text goes here...]</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">[Question Placeholder 2]</span>
+            <p class="faq-answer">[Answer text goes here...]</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">[Question Placeholder 3]</span>
+            <p class="faq-answer">[Answer text goes here...]</p>
+        </div>
+        
+        <!-- SECTION 10: 3-Card Grid (Other Scams) -->
+        <h2 class="section-heading-center">Other Scams to Watch For</h2>
+        <div class="scam-grid">
+            <a href="#" class="scam-card">
+                <div class="scam-card-img"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="scam-card-content">
+                    <h3 class="scam-card-title">[Scam Name 1]</h3>
+                    <p class="scam-card-desc">[Short description.]</p>
+                    <span class="btn-text-link">Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="#" class="scam-card">
+                <div class="scam-card-img"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="scam-card-content">
+                    <h3 class="scam-card-title">[Scam Name 2]</h3>
+                    <p class="scam-card-desc">[Short description.]</p>
+                    <span class="btn-text-link">Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="#" class="scam-card">
+                <div class="scam-card-img"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="scam-card-content">
+                    <h3 class="scam-card-title">[Scam Name 3]</h3>
+                    <p class="scam-card-desc">[Short description.]</p>
+                    <span class="btn-text-link">Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Full Width Contact Banner (Light Blue) -->
+    <div class="contact-banner">
+        <h2 class="section-heading-center" style="margin-top:0;">Have more questions?</h2>
+        <a href="#" class="btn-lg-gradient">Contact Us</a>
+    </div>
+
+    <!-- Footer (Global) -->
+    <footer class="site-footer">
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+                <div>
+                    <h4 style="color: var(--lg-blue); margin-bottom: 20px;">LIONSGATE NETWORK</h4>
+                    <p style="font-size: 14px; color: #666;">Registered under UNIQUEHORNS LTD.<br>Company Registration Number: 516374014</p>
+                    <div style="margin-top: 20px;">
+                        <i class="fab fa-facebook" style="font-size: 20px; color: #ccc; margin-right: 10px;"></i>
+                        <i class="fab fa-twitter" style="font-size: 20px; color: #ccc; margin-right: 10px;"></i>
+                        <i class="fab fa-linkedin" style="font-size: 20px; color: #ccc;"></i>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color: #333; margin-bottom: 20px;">Services</h4>
+                    <ul style="font-size: 14px; color: #666; line-height: 2;">
+                        <li>Crypto Investigation</li>
+                        <li>Blockchain Forensic</li>
+                        <li>Asset Recovery</li>
+                        <li>Scam Prevention</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #333; margin-bottom: 20px;">Resources</h4>
+                    <ul style="font-size: 14px; color: #666; line-height: 2;">
+                        <li>Blog</li>
+                        <li>Scam Reports</li>
+                        <li>News Room</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Lionsgate Network. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

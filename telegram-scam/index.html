@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recover Scammed Crypto from Telegram | Lionsgate Network</title>
+    
+    <!-- Fonts: Montserrat and Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- 1. Variables & Reset --- */
+        :root {
+            --e-global-color-primary: #6EC1E4;
+            --e-global-color-secondary: #54595F00;
+            --e-global-color-text: #7A7A7A;
+            --e-global-color-accent: #61CE70;
+            --lg-blue: #4C72F1;
+            --lg-cyan: #5EECC1;
+            --lg-dark-blue: #1133A3;
+            --lg-text-dark: #3A3D41;
+            --lg-bg-light: #F4F9FD;
+            --lg-gradient-button: linear-gradient(180deg, #4EACDA 0%, #5EECC1 100%);
+            --lg-gradient-card: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --lg-font-primary: 'Montserrat', sans-serif;
+            --lg-font-text: 'Roboto', sans-serif;
+            --lg-pink-gradient: linear-gradient(180deg, #FFC0D7 0%, #FFC0D7 100%);
+            --lg-blue-gradient: linear-gradient(180deg, #4C72F1 0%, #2E54DD 100%);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--lg-font-text);
+            background-color: var(--lg-bg-light);
+            color: var(--lg-text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        img { max-width: 100%; height: auto; border: 0; }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--lg-font-primary);
+            font-weight: 700;
+            margin-top: 0;
+            line-height: 1.3;
+        }
+
+        strong { font-weight: 700; }
+
+        /* --- 2. Header --- */
+        .site-header {
+            background: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .header-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-img { height: 50px; width: auto; }
+
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+
+        .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+        }
+        .nav-link:hover { color: var(--lg-blue); }
+        .menu-toggle { display: none; font-size: 24px; color: #333; }
+        
+        @media (max-width: 991px) {
+            .nav-menu { display: none; }
+            .menu-toggle { display: block; }
+        }
+
+        /* --- 3. Hero Section --- */
+        .hero-section {
+            background-color: var(--lg-blue);
+            padding: 120px 20px 100px;
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #FFFFFF;
+        }
+
+        .hero-subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #5EECC1;
+        }
+
+        .hero-intro-text {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            color: #ffffff;
+            text-align: left;
+        }
+        
+        .shape-divider-bottom {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        .shape-divider-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(130% + 1.3px);
+            height: 100px;
+        }
+        .shape-divider-bottom .shape-fill {
+            fill: var(--lg-bg-light);
+        }
+
+        /* --- 4. General Components --- */
+        .btn-lg-gradient {
+            background-image: var(--lg-gradient-button);
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            border: 4px solid var(--lg-cyan);
+            border-radius: 80px;
+            padding: 15px 40px;
+            display: inline-block;
+            box-shadow: 7px 8px 11px 0 rgba(2, 116, 111, 0.11);
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+        .btn-lg-gradient:hover { transform: scale(0.95); color: white; }
+        
+        .content-wrapper {
+            max-width: 1140px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .content-heading {
+            color: var(--lg-text-dark);
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--lg-blue);
+            padding-left: 20px;
+        }
+        
+        .sub-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--lg-text-dark);
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .content-text { font-size: 18px; color: #555; margin-bottom: 20px; }
+
+        /* --- ZIG ZAG LAYOUT STYLES --- */
+        .zigzag-container {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .zigzag-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+        }
+
+        .zigzag-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .zigzag-content {
+            flex: 1;
+        }
+
+        .zigzag-visual {
+            flex: 1;
+            width: 100%;
+            min-height: 350px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            position: sticky;
+            top: 100px;
+        }
+
+        .visual-placeholder {
+            background: var(--lg-bg-light);
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        
+        .visual-icon {
+            font-size: 80px;
+            color: var(--lg-blue);
+            margin-bottom: 20px;
+            opacity: 0.8;
+            background: -webkit-linear-gradient(#4C72F1, #5EECC1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Fake UI for visuals */
+        .fake-ui-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .fake-ui-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* Scam Cards Grid */
+        .scam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+        .scam-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            padding: 30px;
+        }
+        .scam-card:hover { transform: translateY(-10px); border-color: var(--lg-cyan); }
+        .scam-card i {
+            font-size: 30px;
+            color: var(--lg-blue);
+            margin-bottom: 15px;
+        }
+        .scam-card-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: var(--lg-text-dark); margin-top: 0; }
+        .scam-card-desc { font-size: 16px; color: #666; margin-bottom: 20px; flex-grow: 1; }
+
+        /* Other Sections */
+        .section-heading-center {
+            color: var(--lg-text-dark);
+            font-size: 36px;
+            margin-top: 100px;
+            margin-bottom: 60px;
+            text-align: center;
+            width: 100%;
+            font-weight: 700;
+        }
+
+        .alert-box {
+            background-color: #FFF0F0;
+            border: 1px solid #FFCCCC;
+            color: #D9534F;
+            padding: 30px;
+            border-radius: 12px;
+            font-family: 'Roboto', monospace;
+            font-size: 18px;
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .content-list li {
+            margin-bottom: 15px;
+        }
+
+        /* Video Section */
+        .hero-video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        .hero-video { width: 100%; display: block; }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .stat-card {
+            border-radius: 30px;
+            padding: 30px 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            min-height: 180px;
+        }
+        .stat-card.pink { background-image: var(--lg-pink-gradient); }
+        .stat-card.blue { background-image: var(--lg-blue-gradient); }
+        .stat-label { font-size: 14px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; opacity: 0.9; }
+        .stat-prefix { font-size: 20px; font-weight: 700; margin-bottom: 0px; text-transform: uppercase; }
+        .stat-number { font-size: 50px; font-weight: 700; line-height: 1; }
+
+        /* Exchange Grid */
+        .exchange-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+        .exchange-logo { 
+            height: 40px; 
+            width: auto; 
+            opacity: 0.7; 
+            transition: all 0.3s;
+            filter: grayscale(100%);
+        }
+        .exchange-logo:hover { 
+            opacity: 1; 
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* Why Choose Us */
+        .why-choose-section {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+        .why-choose-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 30px rgba(76, 114, 241, 0.2);
+        }
+        .why-choose-icon i {
+            font-size: 40px;
+            background: linear-gradient(135deg, #4C72F1, #5EECC1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .why-choose-text {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            cursor: pointer;
+        }
+        .faq-question { font-weight: 700; color: var(--lg-blue); font-size: 20px; display: block; margin-bottom: 15px; }
+        .faq-answer { color: #666; font-size: 16px; line-height: 1.8; margin: 0; }
+
+        /* Footer */
+        .site-footer { background-color: #fff; padding: 60px 20px; text-align: center; border-top: 1px solid #eee; }
+        .footer-bottom { margin-top: 40px; font-size: 14px; color: #999; }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .zigzag-row {
+                flex-direction: column !important;
+                gap: 30px;
+            }
+            .zigzag-visual {
+                min-height: 250px;
+                position: static;
+            }
+            .content-heading { font-size: 26px; }
+            .hero-title { font-size: 32px; }
+            .zigzag-container { gap: 60px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="https://lionsgate.network/">
+                    <img src="https://lionsgate.network/wp-content/uploads/2025/09/lionsgate-logo-png-e1763376719134.png" alt="Lionsgate Network" class="logo-img">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Blog</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+            <a href="https://wkf.ms/3xKmJtj" class="btn-lg-gradient">Get Started Free</a>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <h1 class="hero-title">Recover Scammed Crypto from Telegram</h1>
+            <p class="hero-subtitle">Victim of a Telegram Crypto Scam? Your Path to Recovery Starts Here.</p>
+            
+            <div class="hero-intro-text">
+                <p style="margin-bottom: 20px;">The feeling is one of profound violation—a mix of shock, anger, and a desperate sense of urgency. You've been targeted by a sophisticated crypto scam on Telegram, and the immediate, crushing thought is that your assets have vanished without a trace. It is a dangerous myth that stolen cryptocurrency is irretrievable.</p>
+                <p>While transactions on the blockchain are irreversible, they are also permanently recorded on a public ledger. This creates an indelible digital trail that, with the right expertise, can be meticulously traced. At Lionsgate Network, we navigate the digital labyrinth left by criminals to track your funds and build the actionable intelligence required to reclaim them.</p>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <a href="#recovery-steps" class="btn-lg-gradient">Start Recovery Process</a>
+            </div>
+        </div>
+
+        <div class="shape-divider-bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="shape-fill" d="M1000,4.3V0H0v4.3C0.9,23.1,126.7,99.2,500,100S1000,22.7,1000,4.3z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ZIG ZAG Main Content -->
+    <div class="content-wrapper">
+        <div class="zigzag-container">
+            
+            <!-- ROW 1: What is it? -->
+            <div class="zigzag-row">
+                <div class="zigzag-content">
+                    <h2 class="content-heading">What is a Telegram Crypto Scam?</h2>
+                    <p class="content-text">At its core, a <strong>Telegram crypto scam</strong> is any fraudulent scheme orchestrated on the platform with the explicit goal of deceiving individuals into surrendering their cryptocurrency. These scams are not a single type of fraud but a broad category ranging from investment cons to phishing attacks.</p>
+                    <p class="content-text">What makes these schemes so effective—and dangerous—is how they expertly weaponize the very features that attract legitimate users: encryption, massive anonymous groups, and a culture of privacy. Criminals twist these tools into a shield for their operations.</p>
+                </div>
+                <div class="zigzag-visual">
+                    <div class="visual-placeholder">
+                        <i class="fab fa-telegram visual-icon"></i>
+                        <h4 style="color:#555;">Weaponized Privacy</h4>
+                        <p style="font-size:14px; color:#999; margin-top:10px;">Encryption vs. Exploitation</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 2: Why Telegram? (Auto Reversed) -->
+            <div class="zigzag-row">
+                <div class="zigzag-content">
+                    <h2 class="content-heading">Why Scammers Flock to Telegram</h2>
+                    <h3 class="sub-heading">Anonymity: A Double-Edged Sword</h3>
+                    <p class="content-text">The ability to create accounts without a publicly visible phone number allows criminals to construct elaborate false identities. This operational security decouples their real-world identity from their fraudulent actions.</p>
+                    <h3 class="sub-heading">Large, Unregulated Groups</h3>
+                    <p class="content-text">Scammers exploit supergroups to create instant pools of targets. They scrape member lists of legitimate projects and forcibly add users to "broadcast only" channels—echo chambers where only the scammer's narrative is heard.</p>
+                    <h3 class="sub-heading">Automated Bots</h3>
+                    <p class="content-text">Sophisticated bots automate the attack, sending thousands of phishing messages or impersonating support agents the moment you ask a question in a public chat.</p>
+                </div>
+                <div class="zigzag-visual">
+                    <div class="visual-placeholder">
+                        <i class="fas fa-users-slash visual-icon"></i>
+                        <h4 style="color:#555;">The Hunting Ground</h4>
+                        <p style="font-size:14px; color:#999; margin-top:10px;">Bots & Fake Communities</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End ZigZag Container -->
+        
+        <!-- 6 Common Scams Grid -->
+        <div style="margin-top: 100px;">
+            <h2 class="section-heading-center">Anatomy of Deception: 6 Common Scams</h2>
+            <p class="content-text" style="text-align:center; max-width:800px; margin:0 auto;">These are meticulously planned operations with specific playbooks designed to exploit investor psychology.</p>
+            
+            <div class="scam-grid">
+                <div class="scam-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3 class="scam-card-title">Fake "VIP Signal" Groups</h3>
+                    <p class="scam-card-desc">Users are added to channels promising "guaranteed profits" from elite analysts. Doctored screenshots and fake testimonials create social proof, luring victims to deposit crypto into a fraudulent trading platform controlled by the scammer.</p>
+                </div>
+                <div class="scam-card">
+                    <i class="fas fa-pump-soap"></i>
+                    <h3 class="scam-card-title">Pump and Dump Schemes</h3>
+                    <p class="scam-card-desc">Coordinated hype campaigns artificially inflate the price of an obscure coin. Admins urge members to buy at a specific time (the "pump"), only to sell off their own massive holdings at the peak (the "dump"), crashing the price.</p>
+                </div>
+                <div class="scam-card">
+                    <i class="fas fa-heart-broken"></i>
+                    <h3 class="scam-card-title">Pig Butchering (Romance)</h3>
+                    <p class="scam-card-desc">A long-con often starting on dating apps but moving to Telegram. The scammer builds a deep emotional bond over months before introducing a "secret" investment opportunity to "build a future together."</p>
+                </div>
+                <div class="scam-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3 class="scam-card-title">Admin Impersonation</h3>
+                    <p class="scam-card-desc">Predators monitor legitimate groups. When a user asks for help, they instantly DM posing as "Support" or an Admin. They guide the victim to a phishing site or ask for a seed phrase to "synchronize" the wallet.</p>
+                </div>
+                <div class="scam-card">
+                    <i class="fas fa-gift"></i>
+                    <h3 class="scam-card-title">Phony Airdrops</h3>
+                    <p class="scam-card-desc">Fake announcements impersonating major projects promise free tokens. Victims are asked to send a small "gas fee" to verify their address or connect their wallet to a site that drains their assets.</p>
+                </div>
+                <div class="scam-card">
+                    <i class="fas fa-code"></i>
+                    <h3 class="scam-card-title">Malicious Wallet Drainers</h3>
+                    <p class="scam-card-desc">Technical attacks where victims are tricked into signing a transaction (Token Approval) on a fake dApp. This grants the scammer's smart contract unlimited permission to withdraw funds without further interaction.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recovery Process ZigZag -->
+        <div class="content-wrapper" style="margin-top: 100px;">
+            <div class="zigzag-container">
+                
+                <!-- ROW 3: The Myth of Lost Forever -->
+                <div class="zigzag-row">
+                    <div class="zigzag-content">
+                        <h2 class="content-heading">The Myth of 'Lost Forever'</h2>
+                        <p class="content-text">After a scam, victims often believe their money is gone forever. This belief fuels the criminals. While blockchain transactions are irreversible, they are **traceable**.</p>
+                        <p class="content-text">Every transaction is permanently recorded on a public ledger. Wallet addresses are pseudonymous, not anonymous. They leave indelible fingerprints. The art of recovery lies in following this digital trail, connecting data points to real-world entities, and de-anonymizing the perpetrators.</p>
+                    </div>
+                    <div class="zigzag-visual">
+                        <div class="visual-placeholder">
+                            <i class="fas fa-search-location visual-icon"></i>
+                            <h4 style="color:#555;">Digital Fingerprints</h4>
+                            <p style="font-size:14px; color:#999; margin-top:10px;">The Ledger Never Forgets</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 4: The Recovery Process (Auto Reversed) -->
+                <div class="zigzag-row">
+                    <div class="zigzag-content">
+                        <h2 class="content-heading">How Recovery Works</h2>
+                        <div style="margin-top:20px;">
+                            <div style="margin-bottom:20px;">
+                                <h3 class="sub-heading" style="margin:0 0 10px 0; font-size:20px;">1. On-Chain Forensics</h3>
+                                <p class="content-text" style="font-size:16px;">We use advanced tools to map the flow of funds through mixers and chain-hopping, de-anonymizing complex laundering techniques.</p>
+                            </div>
+                            <div style="margin-bottom:20px;">
+                                <h3 class="sub-heading" style="margin:0 0 10px 0; font-size:20px;">2. Off-Chain Intelligence</h3>
+                                <p class="content-text" style="font-size:16px;">We link wallet addresses to real-world identities by analyzing social footprints, leaked databases, and exchange accounts (KYC).</p>
+                            </div>
+                            <div>
+                                <h3 class="sub-heading" style="margin:0 0 10px 0; font-size:20px;">3. Law Enforcement Collaboration</h3>
+                                <p class="content-text" style="font-size:16px;">We create court-ready intelligence packages that empower authorities to issue subpoenas and freeze orders against identified exchange accounts.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zigzag-visual">
+                        <div class="visual-placeholder">
+                            <i class="fas fa-file-contract visual-icon"></i>
+                            <h4 style="color:#555;">Actionable Intelligence</h4>
+                            <p style="font-size:14px; color:#999; margin-top:10px;">From Analysis to Seizure</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Immediate Action Plan -->
+        <div id="recovery-steps"></div>
+        <div style="margin-top: 80px; background:white; padding:40px; border-radius:20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            <h2 class="content-heading" style="margin-top:0; border-color:#D9534F;">What To Do Right Now: 3 Immediate Steps</h2>
+            
+            <div class="alert-box">
+                <i class="fas fa-ban" style="font-size: 24px;"></i>
+                <div>
+                    <strong>1. Cease All Communication Immediately</strong><br>
+                    Do not respond to threats or promises. Every interaction is a trap. Block their account and any associated channels.
+                </div>
+            </div>
+            
+            <div style="margin-top:20px;">
+                <p class="content-text"><strong>2. Preserve Every Piece of Evidence.</strong> Screenshot everything: full chat history, user IDs, bio info, transaction hashes, and wallet addresses. Do not delete anything.</p>
+                <p class="content-text"><strong>3. Engage a Recovery Specialist.</strong> Time is your enemy. Scammers move funds quickly. Contacting a specialist initiates the tracing process before the trail goes cold.</p>
+            </div>
+        </div>
+
+        <!-- Take Control Section -->
+        <div style="text-align: center; margin-top: 80px;">
+            <h2 class="section-heading-center" style="margin-top:0;">Don't Let Scammers Have the Final Word</h2>
+            <p class="content-text" style="max-width:800px; margin:0 auto 30px;">You are not helpless. Recovery is a meticulous process of forensic investigation and strategic action. Take the first step in turning the tables.</p>
+            <a href="https://wkf.ms/3xKmJtj" class="btn-lg-gradient">Request Confidential Case Evaluation</a>
+        </div>
+        
+    </div> <!-- End of Content Wrapper -->
+
+    <!-- How Do We Work Section -->
+    <section class="how-we-work-section">
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <h2 class="section-heading-center" style="margin-top: 0;">How Do We Work?</h2>
+            <h3 style="font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: 500; color: #000; margin-bottom: 50px; text-align: center;">Tracking Funds Across All Major Exchanges</h3>
+            
+            <div class="exchange-grid">
+                <img src="https://logo.clearbit.com/solana.com" alt="Solana" class="exchange-logo">
+                <img src="https://logo.clearbit.com/opensea.io" alt="OpenSea" class="exchange-logo">
+                <img src="https://logo.clearbit.com/celsius.network" alt="Celsius" class="exchange-logo">
+                <img src="https://logo.clearbit.com/terra.money" alt="Terra" class="exchange-logo">
+                <img src="https://logo.clearbit.com/crypto.com" alt="Crypto.com" class="exchange-logo">
+                <img src="https://logo.clearbit.com/trustwallet.com" alt="Trust Wallet" class="exchange-logo">
+                <img src="https://logo.clearbit.com/kucoin.com" alt="KuCoin" class="exchange-logo">
+                <img src="https://logo.clearbit.com/binance.com" alt="Binance" class="exchange-logo">
+                <img src="https://logo.clearbit.com/near.org" alt="Near" class="exchange-logo">
+                <img src="https://logo.clearbit.com/lastpass.com" alt="LastPass" class="exchange-logo">
+                <img src="https://logo.clearbit.com/ftx.com" alt="FTX" class="exchange-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us & Getting Started Section -->
+    <section class="why-choose-section">
+        <div class="why-choose-icon">
+             <i class="fas fa-lion"></i>
+        </div>
+        <h2 class="section-heading-center" style="margin-top: 20px; font-size: 38px;">Why Choose Lionsgate Network?</h2>
+        <p class="why-choose-text">
+            Lionsgate Network commitment to integrity, confidentiality, and transparency sets us apart. We offer a free evaluation of your case and a conference video call with a representative to ensure you're informed every step of the way. Serving both private and corporate clients, Lionsgate Network is here to turn a daunting process into a success story.
+        </p>
+        <p class="why-choose-text" style="font-weight: 600;">
+            Join the growing list of satisfied clients who have reclaimed their digital assets with Lionsgate Network. Reach out today, and let’s begin your journey to recovery.
+        </p>
+
+        <h2 class="section-heading-center" style="margin-top: 60px; font-size: 38px;">Getting Started is Easy</h2>
+        <p class="why-choose-text">
+            Starting with Lionsgate Network is easy with our free Recovery Wizard™. We provide a fully transparent process from the beginning and offer a conference video call with a representative for every client. Our professional agents maintain confidentiality and will contact you with additional information if we believe we can recover your funds.
+        </p>
+        
+        <a href="https://wkf.ms/3xKmJtj" class="btn-lg-gradient" style="margin-top: 20px;">TRY WIZARD</a>
+    </section>
+
+    <!-- FAQ Wrapper -->
+    <div class="content-wrapper" style="margin-top: 0;">
+        <h2 class="content-heading">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <span class="faq-question">Are all Telegram crypto groups scams?</span>
+            <p class="faq-answer">While not all are fraudulent, Telegram is a high-risk environment. Any group promising "guaranteed returns," exclusive "insider signals," or pressuring you to act is likely a scam. Being added without consent is a major red flag.</p>
+        </div>
+
+        <div class="faq-item">
+            <span class="faq-question">Can my stolen cryptocurrency actually be recovered?</span>
+            <p class="faq-answer">Yes, recovery is often possible. Blockchain transactions leave a permanent record. Skilled investigators can trace these assets to an endpoint (like a centralized exchange) where they can be frozen, provided action is taken quickly.</p>
+        </div>
+
+        <div class="faq-item">
+            <span class="faq-question">Why shouldn't I just report the scam to the police?</span>
+            <p class="faq-answer">Reporting is essential, but law enforcement often lacks the resources for complex, cross-border crypto tracing. Lionsgate Network acts as a force multiplier, providing the actionable forensic evidence authorities need to proceed with seizures.</p>
+        </div>
+
+        <div class="faq-item">
+            <span class="faq-question">What info do I need to start a recovery case?</span>
+            <p class="faq-answer">Gather the scammer's wallet addresses, all transaction hashes (TxIDs), screenshots of conversations/profiles, and URLs of any fraudulent websites. This data is the foundation of the investigation.</p>
+        </div>
+        
+        <div class="faq-item">
+            <span class="faq-question">How long does the asset recovery process take?</span>
+            <p class="faq-answer">There is no fixed timeline; it depends on the scam's complexity and the responsiveness of third parties (exchanges, legal entities). We maintain transparent communication throughout the entire investigation.</p>
+        </div>
+    </div>
+
+    <!-- Other Scams to Watch For -->
+    <div class="content-wrapper" style="margin-top: 0;">
+        <h2 class="section-heading-center">Other Scams to Watch For</h2>
+        <div class="scam-grid">
+            <a href="#" class="scam-card">
+                <div class="scam-card-img">
+                    <i class="fas fa-heart-broken"></i>
+                </div>
+                <div class="scam-card-content">
+                    <h3 class="scam-card-title">Crypto Romance Scam</h3>
+                    <p class="scam-card-desc">Long-term manipulation where scammers build trust to steal assets ("Pig Butchering").</p>
+                    <span class="btn-text-link">Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="#" class="scam-card">
+                <div class="scam-card-img">
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+                <div class="scam-card-content">
+                    <h3 class="scam-card-title">USDT Scams</h3>
+                    <p class="scam-card-desc">Fraud involving the popular stablecoin Tether, often in investment schemes.</p>
+                    <span class="btn-text-link">Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="#" class="scam-card">
+                <div class="scam-card-img">
+                    <i class="fas fa-sms"></i>
+                </div>
+                <div class="scam-card-content">
+                    <h3 class="scam-card-title">Coinbase Text Scam</h3>
+                    <p class="scam-card-desc">Fake security alerts designed to make you panic and call a fraudulent number.</p>
+                    <span class="btn-text-link">Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+                <div>
+                    <h4 style="color: var(--lg-blue); margin-bottom: 20px;">LIONSGATE NETWORK</h4>
+                    <p style="font-size: 14px; color: #666;">Registered under UNIQUEHORNS LTD.<br>Company Registration Number: 516374014</p>
+                    <div style="margin-top: 20px;">
+                        <i class="fab fa-facebook" style="font-size: 20px; color: #ccc; margin-right: 10px;"></i>
+                        <i class="fab fa-twitter" style="font-size: 20px; color: #ccc; margin-right: 10px;"></i>
+                        <i class="fab fa-linkedin" style="font-size: 20px; color: #ccc;"></i>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color: #333; margin-bottom: 20px;">Services</h4>
+                    <ul style="font-size: 14px; color: #666; line-height: 2;">
+                        <li>Crypto Investigation</li>
+                        <li>Blockchain Forensic</li>
+                        <li>Asset Recovery</li>
+                        <li>Scam Prevention</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #333; margin-bottom: 20px;">Resources</h4>
+                    <ul style="font-size: 14px; color: #666; line-height: 2;">
+                        <li>Blog</li>
+                        <li>Scam Reports</li>
+                        <li>News Room</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Lionsgate Network. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
